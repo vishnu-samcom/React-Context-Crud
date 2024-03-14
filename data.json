@@ -1,0 +1,24 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "title": "Note 1 Updated",
+      "content": "This is the content of Note 1."
+    },
+    {
+      "id": "2",
+      "title": "Note 2",
+      "content": "This is the content of Note 2."
+    },
+    {
+      "id": "03c3",
+      "title": "Test",
+      "content": "Test note updated"
+    },
+    {
+      "id": "c49d",
+      "title": "Test 2",
+      "content": "Test note content 2"
+    }
+  ]
+}

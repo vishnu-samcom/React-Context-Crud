@@ -1,0 +1,35 @@
+.note {
+    width: 100%;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.note.editing {
+    background-color: #fff8dc;
+}
+
+.note h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.note p {
+    color: #666;
+}
+
+.note .actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.note button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    width: 100%;
+}
