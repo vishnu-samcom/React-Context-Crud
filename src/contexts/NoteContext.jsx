@@ -1,5 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { createContext, useReducer, useContext, useEffect } from 'react';
+import { API_BASE_URL, API_ENDPOINTS } from '../shared/utils/api.constants';
 import axios from 'axios';
 
 const NoteContext = createContext();
@@ -31,7 +33,9 @@ const NoteProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/notes');
+        const response = await axios.get(
+          `${API_BASE_URL}${API_ENDPOINTS.GET_NOTES}`
+        );
         dispatch({ type: 'FETCH_NOTES', payload: response.data });
       } catch (error) {
         console.error('Error fetching notes', error);
@@ -44,7 +48,7 @@ const NoteProvider = ({ children }) => {
   const addNote = async (noteData) => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/notes',
+        `${API_BASE_URL}${API_ENDPOINTS.ADD_NOTE}`,
         noteData
       );
       dispatch({ type: 'ADD_NOTE', payload: response.data });
@@ -56,7 +60,7 @@ const NoteProvider = ({ children }) => {
   const updateNote = async (noteData) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/notes/${noteData.id}`,
+        `${API_BASE_URL}${API_ENDPOINTS.UPDATE_NOTE}/${noteData.id}`,
         noteData
       );
       dispatch({ type: 'UPDATE_NOTE', payload: response.data });
@@ -67,7 +71,9 @@ const NoteProvider = ({ children }) => {
 
   const deleteNote = async (noteId) => {
     try {
-      await axios.delete(`http://localhost:8000/notes/${noteId}`);
+      await axios.delete(
+        `${API_BASE_URL}${API_ENDPOINTS.DELETE_NOTE}${noteId}`
+      );
       dispatch({ type: 'DELETE_NOTE', payload: noteId });
     } catch (error) {
       console.error('Error deleting note', error);
@@ -91,5 +97,4 @@ const useNote = () => {
   return context;
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export { NoteProvider, useNote };
